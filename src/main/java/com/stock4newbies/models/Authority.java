@@ -1,5 +1,8 @@
 package com.stock4newbies.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -20,6 +23,7 @@ public class Authority {
     private AuthorityName name;
 
     @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    @JsonBackReference
     private List<User> users;
 
     public Long getId() {

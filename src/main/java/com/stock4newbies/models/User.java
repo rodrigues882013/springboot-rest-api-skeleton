@@ -1,5 +1,7 @@
 package com.stock4newbies.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class User {
     private String username;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @JsonManagedReference
     @JoinTable(
             name = "user_authority",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
